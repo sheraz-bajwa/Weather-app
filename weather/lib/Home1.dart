@@ -12,52 +12,41 @@ class _AllState extends State<All> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 30, 30, 30),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    Cities(),
-                    Cities(),
-                  ],
-                ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    Cities(),
-                    Cities(),
-                  ],
-                ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    Cities(),
-                    Cities(),
-                  ],
-                ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    Cities(),
-                    Cities(),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      // body: TextFormField(
+      //   controller: _cityTextController,
+      //   onChanged: (value) {
+      //     city1 = value;
+      //     setState(() {
+      //       // checkweather(
+      //       //     "${snapshot.data[0].weather}", context);
+      //     });
+      //   },
+      //   style: TextStyle(color: Colors.white),
+      //   decoration: InputDecoration(
+      //     enabledBorder: OutlineInputBorder(
+      //       borderRadius: BorderRadius.circular(15),
+      //       borderSide: BorderSide(width: 1, color: Color(0xffE6E8EB)),
+      //     ),
+      //     hintText: 'Search Country',
+      //     hintStyle: TextStyle(color: Colors.white),
+      //     suffixIcon: GestureDetector(
+      //       onTap: () async {
+      //         final response =
+      //             await _dataservices.getweather(_cityTextController.text);
+      //         setState(() {
+      //           _response = response;
+      //         });
+
+      //         _cityTextController.clear();
+      //       },
+      //       child: Icon(
+      //         Icons.search,
+      //         color: Colors.white,
+      //         size: 35,
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

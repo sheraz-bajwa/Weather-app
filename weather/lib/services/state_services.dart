@@ -5,9 +5,15 @@ import 'package:weather/Karachimodel.dart';
 import 'package:weather/services/apiurl.dart';
 
 class Weatherservices {
-  Future<WWeather> fetchRecords() async {
-    final response = await http.get(Uri.parse(AppUrl.Lahore));
-
+  Future<WWeather> fetchRecords(String city) async {
+    //final response = await http.get(Uri.parse(AppUrl.Lahore));
+    final queryParameter = {
+      'q': city,
+      'appid': '1962c8af92e499cfaf0f17369aed0f0b',
+    };
+    final uri = Uri.https(
+        'api.openweathermap.org', '/data/2.5/weather', queryParameter);
+final response = await http.get(uri);
     if (response.statusCode == 200) {
       var data1 = jsonDecode(response.body);
 

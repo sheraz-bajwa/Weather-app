@@ -10,33 +10,64 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  TextEditingController _cityTextController = TextEditingController();
   final now = DateTime.now();
+  String city1 = "";
+  //String a = _response!.weatherInfo.description;
+  WWeather? _response;
   @override
   Widget build(BuildContext context) {
     Weatherservices weatherServices = Weatherservices();
 
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 151, 175, 241),
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 151, 175, 241),
-          elevation: 0,
-          title: Text('Weather'),
-          centerTitle: true,
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.settings_accessibility_outlined))
-          ],
-        ),
+        
         body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: FutureBuilder(
-                future: weatherServices.fetchRecords(),
+                future: weatherServices.fetchRecords(_cityTextController.text),
                 builder: (context, AsyncSnapshot<WWeather> snapshot) {
                   if (snapshot.hasData) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        TextFormField(
+                          controller: _cityTextController,
+                          onChanged: (value) {
+                            city1 = value;
+                            setState(() {
+                              // checkweather(
+                              //     "${snapshot.data[0].weather}", context);
+                            });
+                          },
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(
+                                  width: 1, color: Color(0xffE6E8EB)),
+                            ),
+                            hintText: 'Search Country',
+                            hintStyle: TextStyle(color: Colors.white),
+                            suffixIcon: GestureDetector(
+                              onTap: () async {
+                                final response = await weatherServices
+                                    .fetchRecords(_cityTextController.text);
+                                //getweather(_cityTextController.text);
+                                setState(() {
+                                  _response = response;
+                                });
+
+                                _cityTextController.clear();
+                              },
+                              child: Icon(
+                                Icons.search,
+                                color: Colors.white,
+                                size: 35,
+                              ),
+                            ),
+                          ),
+                        ),
                         Text('Hours ' + now.hour.toString()),
                         Text('minutes ' + now.minute.toString()),
                         Text('seconds ' + now.second.toString()),
