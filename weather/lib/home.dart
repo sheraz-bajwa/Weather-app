@@ -21,7 +21,6 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 151, 175, 241),
-        
         body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: FutureBuilder(
