@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:weather/Home1.dart';
 import 'package:weather/cities/karachi.dart';
-import 'package:weather/home.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:weather/splashscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home1(),
+      home: Splash(),
     );
   }
 }
